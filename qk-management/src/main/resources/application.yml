@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: qk-management
+
+  # 数据库连接信息
+  datasource:
+    url: jdbc:mysql://localhost:3306/web
+    username: root
+    password: 88888888
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# mybatis 配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml # Mapper XML 文件位置
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 输出 SQL 日志
+    map-underscore-to-camel-case: true # 驼峰命名转换

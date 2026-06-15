@@ -15,6 +15,8 @@
     <artifactId>qk-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+
+    <!--    聚合-->
     <modules>
         <module>qk-common</module>
         <module>qk-entity</module>
@@ -27,6 +29,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mybatis.version>4.0.1</mybatis.version>
         <mybatis.test.version>4.0.1</mybatis.test.version>
+        <pagehelper.version>4.1.0</pagehelper.version>
     </properties>
 
     <dependencies>
@@ -37,6 +40,7 @@
         </dependency>
     </dependencies>
 
+    <!--    版本锁定-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -49,6 +53,11 @@
                 <artifactId>mybatis-spring-boot-starter-test</artifactId>
                 <version>${mybatis.test.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
