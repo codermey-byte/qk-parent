@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qk.mapper.ActivityMapper">
+
+    <insert id="addActivity">
+        insert into activity
+        (name, channel, status, type, start_time, end_time, description, discount, voucher)
+        values
+        (#{name}, #{channel}, #{status}, #{type}, #{startTime}, #{endTime}, #{description}, #{discount},
+        #{voucher})
+    </insert>
+
+    <update id="updateActivity">
+        update activity
+        set name = #{name},
+        channel = #{channel},
+        status = #{status},
+        type = #{type},
+        start_time = #{startTime},
+        end_time = #{endTime},
+        description = #{description},
+        discount = #{discount},
+        voucher = #{voucher}
+        where id = #{id}
+    </update>
+
+    <select id="getActivities" resultType="com.qk.entity.Activity">
+        select * from activity
+        <where>
+            <if test="channel != null">
+                and channel = #{channel}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="type != null">
+                and type = #{type}
+            </if>
+        </where>
+    </select>
+</mapper>
