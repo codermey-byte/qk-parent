@@ -4,6 +4,8 @@ package com.qk.service;
 import com.qk.common.PageResult;
 import com.qk.entity.Dept;
 
+import java.util.List;
+
 /**
  * 部门服务接口
  */
@@ -15,9 +17,30 @@ public interface DeptService {
      */
     void addDept(Dept dept);
 
+    /**
+     * 删除部门
+     *
+     * @param id
+     */
+    void deleteDept(Integer id);
 
     /**
-     * 查询符合条件的部门分页数据
+     * 更新部门
+     *
+     * @param dept
+     */
+    void updateDept(Dept dept);
+
+    /**
+     * 根据 id 查询部门
+     *
+     * @param id 部门 id
+     * @return 部门信息
+     */
+    Dept getDeptById(Integer id);
+
+    /**
+     * 部门列表（带分页）
      *
      * @param name     部门名称
      * @param status   部门状态
@@ -28,26 +51,9 @@ public interface DeptService {
     PageResult<Dept> getDepts(String name, Integer status, Integer page, Integer pageSize);
 
     /**
-     * 根据部门 id 查询部门信息
+     * 查询所有部门
      *
-     * @param id 部门 id
-     * @return 部门信息
+     * @return
      */
-
-    Dept getDeptById(Integer id);
-
-
-    /**
-     * 更新部门信息
-     *
-     * @param dept
-     */
-    void updateDept(Dept dept);
-
-    /**
-     * 删除部门
-     *
-     * @param id
-     */
-    void deleteDept(Integer id);
+    List<Dept> getAllDepts();
 }

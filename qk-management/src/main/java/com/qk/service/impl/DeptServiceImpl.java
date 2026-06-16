@@ -27,6 +27,21 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
+    public void deleteDept(Integer id) {
+        deptMapper.deleteById(id);
+    }
+
+    @Override
+    public void updateDept(Dept dept) {
+        deptMapper.updateById(dept);
+    }
+
+    @Override
+    public Dept getDeptById(Integer id) {
+        return deptMapper.selectById(id);
+    }
+
+    @Override
     public PageResult<Dept> getDepts(String name, Integer status, Integer page, Integer pageSize) {
 //        方式一：普通 sql 查询
 //        Integer count = deptMapper.getDeptsCount(name, status);
@@ -43,17 +58,7 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public Dept getDeptById(Integer id) {
-        return deptMapper.selectById(id);
-    }
-
-    @Override
-    public void updateDept(Dept dept) {
-        deptMapper.updateById(dept);
-    }
-
-    @Override
-    public void deleteDept(Integer id) {
-        deptMapper.deleteById(id);
+    public List<Dept> getAllDepts() {
+        return deptMapper.getAllDepts();
     }
 }

@@ -12,13 +12,38 @@ import java.util.List;
 public interface DeptMapper {
 
     /**
-     * 新增部门信息
+     * 新增部门
      */
     @Insert("insert into dept(name, status) values (#{name}, #{status})")
     void insert(Dept dept);
 
     /**
-     * 查询符合条件的部门总数量
+     * 删除部门
+     *
+     * @param id 部门 id
+     */
+    @Delete("delete from dept where id = #{id}")
+    void deleteById(Integer id);
+
+
+    /**
+     * 更新部门
+     *
+     * @param dept 部门信息
+     */
+    void updateById(Dept dept);
+
+    /**
+     * 根据 id 查询部门
+     *
+     * @param id 部门 id
+     * @return 部门信息
+     */
+    @Select("select id,name,status,create_time,update_time from dept where id = #{id}")
+    Dept selectById(Integer id);
+
+    /**
+     * 查询符合条件的部门总数
      *
      * @param name   部门名称
      * @param status 部门状态
@@ -29,7 +54,7 @@ public interface DeptMapper {
 
     /**
      * 方式一：普通 sql 查询
-     * 查询符合条件的部门列表数量
+     * 部门列表（带分页）
      *
      * @param name     部门名称
      * @param status   部门状态
@@ -42,7 +67,7 @@ public interface DeptMapper {
 
     /**
      * 方式二：借助 pagehelper 插件
-     * 查询符合条件的部门列表数量
+     * 部门列表（带分页）
      *
      * @param name   部门名称
      * @param status 部门状态
@@ -50,29 +75,11 @@ public interface DeptMapper {
      */
     List<Dept> getDeptsByCondition(String name, Integer status);
 
-
     /**
-     * 根据部门 id 查询部门信息
+     * 查询所有部门
      *
-     * @param id
      * @return
      */
-    @Select("select id,name,status,create_time,update_time from dept where id = #{id}")
-    Dept selectById(Integer id);
-
-
-    /**
-     * 根据部门 id 更新部门信息
-     *
-     * @param dept
-     */
-    void updateById(Dept dept);
-
-    /**
-     * 根据部门 id 删除部门信息
-     *
-     * @param id
-     */
-    @Delete("delete from dept where id = #{id}")
-    void deleteById(Integer id);
+    @Select("select id,name,status,create_time,update_time from dept")
+    List<Dept> getAllDepts();
 }
