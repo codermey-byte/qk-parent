@@ -38,11 +38,6 @@ public class Activity {
     private String description;
 
     /**
-     * 活动状态 1：未开始，2：进行中，3：已结束
-     */
-    private Integer status;
-
-    /**
      * 活动开始时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")

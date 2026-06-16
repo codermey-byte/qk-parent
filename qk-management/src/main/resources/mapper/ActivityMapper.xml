@@ -6,9 +6,9 @@
 
     <insert id="addActivity">
         insert into activity
-        (name, channel, status, type, start_time, end_time, description, discount, voucher)
+        (name, channel, type, start_time, end_time, description, discount, voucher)
         values
-        (#{name}, #{channel}, #{status}, #{type}, #{startTime}, #{endTime}, #{description}, #{discount},
+        (#{name}, #{channel}, #{type}, #{startTime}, #{endTime}, #{description}, #{discount},
         #{voucher})
     </insert>
 
@@ -16,7 +16,6 @@
         update activity
         set name = #{name},
         channel = #{channel},
-        status = #{status},
         type = #{type},
         start_time = #{startTime},
         end_time = #{endTime},
@@ -32,8 +31,14 @@
             <if test="channel != null">
                 and channel = #{channel}
             </if>
-            <if test="status != null">
-                and status = #{status}
+            <if test="status == 1">
+                and start_time &gt; now()
+            </if>
+            <if test="status == 2">
+                and start_time &lt;= now() and end_time &gt;= now()
+            </if>
+            <if test="status == 3">
+                and end_time &lt; now()
             </if>
             <if test="type != null">
                 and type = #{type}
