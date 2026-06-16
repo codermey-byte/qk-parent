@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qk.mapper.CourseMapper">
+    <insert id="addCourse">
+        insert into course
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">
+                name,
+            </if>
+            <if test="subject != null">
+                subject,
+            </if>
+            <if test="target != null">
+                target,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            description
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">
+                #{name},
+            </if>
+            <if test="subject != null">
+                #{subject},
+            </if>
+            <if test="target != null">
+                #{target},
+            </if>
+            <if test="price != null">
+                #{price},
+            </if>
+            #{description}
+        </trim>
+    </insert>
+    <update id="updateCourse">
+        update course
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="subject != null">
+                subject = #{subject},
+            </if>
+            <if test="target != null">
+                target = #{target},
+            </if>
+            <if test="price != null">
+                price = #{price}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <select id="getCourses" resultType="com.qk.entity.Course">
+        select id, name, subject, target, price, description, create_time, update_time
+        from course
+        <where>
+            <if test="name != null and name != ''">
+                name like concat('%', #{name}, '%')
+            </if>
+            <if test="subject != null">
+                and subject = #{subject}
+            </if>
+            <if test="target != null">
+                and target = #{target}
+            </if>
+        </where>
+    </select>
+</mapper>
