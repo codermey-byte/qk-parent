@@ -7,9 +7,8 @@
         <artifactId>qk-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.qk</groupId>
     <artifactId>qk-management</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <!--    <version>0.0.1-SNAPSHOT</version>-->
     <name>qk-management</name>
     <description>qk-management</description>
     <url/>
@@ -57,14 +56,10 @@
         <dependency>
             <groupId>com.qk</groupId>
             <artifactId>qk-entity</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.qk</groupId>
             <artifactId>qk-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.github.pagehelper</groupId>
