@@ -28,6 +28,7 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mybatis.version>4.0.1</mybatis.version>
+        <mybatis-plus.version>3.5.8</mybatis-plus.version>
         <mybatis.test.version>4.0.1</mybatis.test.version>
         <pagehelper.version>4.1.0</pagehelper.version>
     </properties>
@@ -55,16 +56,24 @@
                 <version>1.0-SNAPSHOT</version>
             </dependency>
 
+            <!--            mybatis 依赖-->
+            <!--            <dependency>-->
+            <!--                <groupId>org.mybatis.spring.boot</groupId>-->
+            <!--                <artifactId>mybatis-spring-boot-starter</artifactId>-->
+            <!--                <version>${mybatis.version}</version>-->
+            <!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>org.mybatis.spring.boot</groupId>-->
+            <!--                <artifactId>mybatis-spring-boot-starter-test</artifactId>-->
+            <!--                <version>${mybatis.test.version}</version>-->
+            <!--                <scope>test</scope>-->
+            <!--            </dependency>-->
+
+            <!--            mybatis-plus 依赖-->
             <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter-test</artifactId>
-                <version>${mybatis.test.version}</version>
-                <scope>test</scope>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
             </dependency>
 
             <!--pagehelper 分页插件依赖-->
