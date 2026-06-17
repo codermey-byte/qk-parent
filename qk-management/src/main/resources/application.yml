@@ -9,9 +9,25 @@ spring:
     password: 88888888
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+
+  servlet:
+    multipart:
+      # 文件上传大小限制
+      max-file-size: 10MB
+      # 请求大小限制
+      max-request-size: 10MB
+
+
 # mybatis 配置
 mybatis:
   mapper-locations: classpath:mapper/*.xml # Mapper XML 文件位置
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 输出 SQL 日志
     map-underscore-to-camel-case: true # 驼峰命名转换
+
+#阿里云OSS
+aliyun:
+  oss:
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    bucketName: codermey-qk-management
+    region: cn-beijing
