@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qk.mapper.UserMapper">
+    <insert id="addUser">
+        insert into
+        user(username,password,name,phone,email,gender,status,dept_id,role_id,image,remark)
+        values(#{username},#{password},#{name},#{phone},#{email},#{gender},#{status},#{deptId},#{roleId},#{image},#{remark})
+    </insert>
+
+    <delete id="deleteUserByIds">
+        delete from user where id in
+        <foreach item="id" collection="ids" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="updateUserById">
+        update user
+        <set>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="deptId != null">
+                dept_id = #{deptId},
+            </if>
+            <if test="roleId != null">
+                role_id = #{roleId},
+            </if>
+            <if test="image != null and image != ''">
+                image = #{image},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="getUserById" resultType="com.qk.entity.User">
+        select id,username,password,name,phone,email,gender,status,dept_id,role_id,image,remark,create_time,update_time
+        from user
+        where id = #{id}
+    </select>
+
+    <select id="getUsers" resultType="com.qk.entity.User">
+        select id,username,password,name,phone,email,gender,status,dept_id,role_id,image,remark,create_time,update_time
+        from user
+        <where>
+            <if test="name != null and name != ''">
+                name like concat('%',#{name},'%')
+            </if>
+            <if test="phone != null and phone != ''">
+                and phone like concat('%',#{phone},'%')
+            </if>
+            <if test="deptId != null">
+                and dept_id = #{deptId}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
+
+    <select id="getUserByUsername" resultType="com.qk.entity.User">
+        select u.*, r.label
+        from user u left join role r on u.role_id = r.id
+        where username = #{username}
+    </select>
+</mapper>
