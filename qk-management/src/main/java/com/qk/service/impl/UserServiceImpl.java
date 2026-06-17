@@ -57,6 +57,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> getUsersByRoleLabel(String roleLabel) {
+        return userMapper.getUsersByRoleLabel(roleLabel);
+    }
+
+    @Override
+    public List<User> getUsersByDeptId(Integer deptId) {
+        return userMapper.getUsersByDeptId(deptId);
+    }
+
+    @Override
     public LoginResultVo login(String username, String password) {
         User user = userMapper.getUserByUsername(username);
         String md5Password = DigestUtils.md5DigestAsHex(password.getBytes());

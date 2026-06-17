@@ -68,6 +68,30 @@ public class UserController {
     }
 
     /**
+     * 根据角色查询用户
+     *
+     * @param roleLabel
+     * @return
+     */
+    @GetMapping("/role/{roleLabel}")
+    public Result getUsersByRoleLabel(@PathVariable String roleLabel) {
+        List<User> list = userService.getUsersByRoleLabel(roleLabel);
+        return Result.success(list);
+    }
+
+    /**
+     * 根据部门查询用户
+     *
+     * @param deptId
+     * @return
+     */
+    @GetMapping("/dept/{deptId}")
+    public Result getUsersByDeptId(@PathVariable Integer deptId) {
+        List<User> list = userService.getUsersByDeptId(deptId);
+        return Result.success(list);
+    }
+
+    /**
      * 用户列表（带分页）
      *
      * @param userDto

@@ -49,6 +49,23 @@ public interface UserService {
     PageResult<User> getUsers(UserDto userDto);
 
     /**
+     * 根据角色查询用户
+     *
+     * @param roleLabel
+     * @return 该角色下的所有用户
+     */
+    List<User> getUsersByRoleLabel(String roleLabel);
+
+
+    /**
+     * 根据部门查询用户
+     *
+     * @param deptId 部门id
+     * @return 该部门下的所有用户
+     */
+    List<User> getUsersByDeptId(Integer deptId);
+
+    /**
      * 登录
      *
      * @param username 用户名
@@ -56,5 +73,6 @@ public interface UserService {
      * @return
      */
     LoginResultVo login(String username, String password);
+
 
 }
